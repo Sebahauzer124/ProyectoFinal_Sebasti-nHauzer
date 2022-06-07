@@ -9,6 +9,10 @@ import { AcercadeComponent } from './components/acercade/acercade.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { SkillComponent } from './components/skill/skill.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ElabComponent } from './components/elab/elab.component';
+import { EducacionComponent } from './components/educacion/educacion.component';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { FooterComponent } from './components/footer/footer.component';
  
 
 @NgModule({
@@ -18,7 +22,11 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     LogoAPComponent,
     AcercadeComponent,
     BannerComponent,
-    SkillComponent
+    SkillComponent,
+    ElabComponent,
+    EducacionComponent,
+    ProyectoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
