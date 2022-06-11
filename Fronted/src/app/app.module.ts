@@ -13,8 +13,10 @@ import { ElabComponent } from './components/elab/elab.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { FooterComponent } from './components/footer/footer.component';
+ import {HttpClientModule} from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
  
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,12 +28,15 @@ import { FooterComponent } from './components/footer/footer.component';
     ElabComponent,
     EducacionComponent,
     ProyectoComponent,
-    FooterComponent
+    FooterComponent,
+   HomeComponent,
+   LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgCircleProgressModule.forRoot({})
+    NgCircleProgressModule.forRoot({}),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
