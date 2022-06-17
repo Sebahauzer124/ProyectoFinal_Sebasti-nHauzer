@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+/*@CrossOrigin(origins = "http://localhost:4200")*/
 public class PersonaController {
     @Autowired IPersonaService ipersonaService;
     
@@ -35,36 +35,53 @@ public class PersonaController {
         ipersonaService.savePersona(persona);
         return "La persona fue creada correctamente ";
     }
-   @DeleteMapping("personas/borrar/{id}")
-   public String delatePersona(@PathVariable Long id){
+   @DeleteMapping("personas/borrar/{Id}")
+   public String delatePersona(@PathVariable Long Id){
         
-        ipersonaService.deletePersona(id);
+        ipersonaService.deletePersona(Id);
         
         return "La persona fue borrada correctamente";
     }
     
     
-     @PutMapping("personas/editar/{id}")
-     public Persona editPersona(@PathVariable Long id,
-                                @RequestParam ("nombre") String nuevoNombre,
-                                @RequestParam("apellido") String nuevoApellido,
-                                @RequestParam("img") String nuevoImg){
+     @PutMapping("/personas/editar/{Id}/")
+     public Persona editPersona(@PathVariable ("Id") Long Id,
+                                @RequestParam ("Nombre") String nuevoNombre,
+                                @RequestParam("Apellido") String nuevoApellido,
+                                @RequestParam("Img") String nuevoImg,
+                                @RequestParam("AcercaDe") String nuevoacercaDe,
+                                @RequestParam("Titulo") String nuevoTitulo){
+                     
+                     
      
-     Persona persona= ipersonaService.findPersona(id);
+     Persona persona= ipersonaService.findPersona(Id);
      persona.setNombre(nuevoNombre);
      persona.setApellido(nuevoApellido);
      persona.setImg(nuevoImg);
+     persona.setAcercaDe(nuevoacercaDe);
+     persona.setTitulo(nuevoTitulo);
      
+    
      ipersonaService.savePersona(persona);
      return persona;
      
+     
+  
+  }
+     
+     @GetMapping("personas/traer/{id}")
+     public Persona findPersona(@PathVariable(name ="id")long id ){
+      return ipersonaService.findPersona(id);
      }
-        @GetMapping("personas/traer/perfil")
-    public Persona findPersona(){
-        
-        return ipersonaService.findPersona((long)4);
-    }
-     }
+                                
+    
+          }
+
+                                
+     
+
+     
+     
                                         
     
 

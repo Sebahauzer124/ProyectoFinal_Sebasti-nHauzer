@@ -5,6 +5,7 @@
  */
 package com.portfolio.sh.Service;
 
+import com.portfolio.sh.Excepciones.ResourceNotFoundException;
 import com.portfolio.sh.model.Persona;
 import com.portfolio.sh.Interface.IPersonaService;
 import com.portfolio.sh.Repository.IPersonaRepository;
@@ -37,7 +38,7 @@ private IPersonaRepository ipersonaRepository;
 
     @Override
     public Persona findPersona(Long id) {
-     Persona persona = ipersonaRepository.findById(id).orElse(null);
+     Persona persona = ipersonaRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Persona","id",id));
       return persona;
     }
 
