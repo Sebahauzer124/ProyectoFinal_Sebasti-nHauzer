@@ -8,8 +8,10 @@ package com.portfolio.sh.Controller;
 import com.portfolio.sh.Interface.IEducacionService;
 import com.portfolio.sh.model.Educacion;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,11 +41,13 @@ public class EducacionController {
     public ResponseEntity<Educacion> findEducacionById(@PathVariable(name="idEdu")long idEdu){
     return ResponseEntity.ok(ieducacionService.findEducacion(idEdu));
     }
+ @PreAuthorize("hasRole('ADMIN')")
    @PostMapping("educacion/crear")
-    public String createEducacion(@RequestBody Educacion educacion){
+    public String createEducacion(@Valid @RequestBody Educacion educacion){
         ieducacionService.saveEducacion(educacion);
         return "La Educacion fue creada correctamente ";
     }
+   @PreAuthorize("hasRole('ADMIN')") 
    @DeleteMapping("educacion/borrar/{idEdu}")
    public String delateEducacion(@PathVariable Long idEdu){
         
@@ -59,14 +63,14 @@ public class EducacionController {
    private String descEdu;
    private String imagenEdu;
    */
-    
+    @PreAuthorize("hasRole('ADMIN')")
      @PutMapping("educacion/editar/{idEdu}")
      public Educacion editEducacion(@PathVariable Long idEdu,
-                                 @RequestParam("tituloEdu") String nuevoTitulo,
+                                @RequestParam("tituloEdu") String nuevoTitulo,
                                 @RequestParam("fechaEdu") String nuevaFecha,
                                  @RequestParam("descrpcionEdu") String nuevaDescripcion,
-                                 @RequestParam ("imagenEdu") String nuevaImagen,
-                                  @RequestParam("idEduKF") Long nvoidEduKF)   {
+                                @RequestParam ("imagenEdu") String nuevaImagen,
+                                @RequestParam("idEduKF") Long nvoidEduKF)   {
      
      Educacion educacion= ieducacionService.findEducacion(idEdu);
      educacion.setTituloEdu(nuevoTitulo);

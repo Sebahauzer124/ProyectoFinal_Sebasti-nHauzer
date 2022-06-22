@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 @Getter @Setter
@@ -27,14 +29,24 @@ public class Persona implements Serializable {
     @Column( name ="id", nullable = false, updatable = false)
  private Long Id;
     @Column( name ="nombre", nullable = false, updatable = true)
+    @NotEmpty
+    @Size(min = 2,message = "debe contener al menos dos caracteres")
  private String nombre;
     @Column( name ="apellido", nullable = false, updatable = true )
+     @NotEmpty
+    @Size(min = 2,message = "El apellido debe contener al menos dos caracteres")
  private String apellido;
     @Column( name ="img", nullable = false, updatable = true)
+     @NotEmpty
+    @Size(min = 2,message = "La imagen debe cumplir con su formato")  
  private String img;
-  @Column( name ="acerca_de", nullable = false, updatable = true)  
+  @Column( name ="acerca_de", nullable = false, updatable = true)
+ @NotEmpty
+    @Size(min = 2,message = " Acerca de debe contener al menos dos caracteres")  
  private String acercaDe;
   @Column( name ="titulo", nullable = false,updatable = true)
+   @NotEmpty
+    @Size(min = 2,message = "debe contener al menos dos caracteres")
  private String titulo;
  
 

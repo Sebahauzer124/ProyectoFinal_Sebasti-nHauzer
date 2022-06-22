@@ -4,7 +4,9 @@ package com.portfolio.sh.Controller;
 import com.portfolio.sh.model.Persona;
 import com.portfolio.sh.Interface.IPersonaService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,12 +31,13 @@ public class PersonaController {
  return ipersonaService.getPersonas();
  }
            
-    
+    @PreAuthorize("hasRole('ADMIN')")
    @PostMapping("personas/crear")
-    public String createPersona(@RequestBody Persona persona){
+    public String createPersona(@Valid @RequestBody Persona persona){
         ipersonaService.savePersona(persona);
         return "La persona fue creada correctamente ";
     }
+   @PreAuthorize("hasRole('ADMIN')") 
    @DeleteMapping("personas/borrar/{Id}")
    public String delatePersona(@PathVariable Long Id){
         
@@ -43,14 +46,14 @@ public class PersonaController {
         return "La persona fue borrada correctamente";
     }
     
-    
-     @PutMapping("/personas/editar/{Id}/")
+     @PreAuthorize("hasRole('ADMIN')")
+     @PutMapping("personas/editar/{Id}/")
      public Persona editPersona(@PathVariable ("Id") Long Id,
-                                @RequestParam ("Nombre") String nuevoNombre,
-                                @RequestParam("Apellido") String nuevoApellido,
-                                @RequestParam("Img") String nuevoImg,
-                                @RequestParam("AcercaDe") String nuevoacercaDe,
-                                @RequestParam("Titulo") String nuevoTitulo){
+                             @Valid   @RequestParam ("Nombre") String nuevoNombre,
+                              @Valid  @RequestParam("Apellido") String nuevoApellido,
+                              @Valid  @RequestParam("Img") String nuevoImg,
+                              @Valid  @RequestParam("AcercaDe") String nuevoacercaDe,
+                              @Valid  @RequestParam("Titulo") String nuevoTitulo){
                      
                      
      
