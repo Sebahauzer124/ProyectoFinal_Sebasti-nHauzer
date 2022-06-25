@@ -1,37 +1,30 @@
 <div class="row">
-    <h1>Educación</h1>
+    <h1>Educación</h1>  
+</div>
+<div class="row align-items" *ngFor="let educacion of educacion">
+
+    
+    
     <div class="col-lg-1"></div>
-    <div class="col-lg-12" >
+    <div class="col-lg-10" >
+      
         <ul>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">Modificar</button>
+                <button type="button" class="btn btn-secondary">Eliminar</button>
+                
+              </div>
+              
             <li>
-                <h1>Estudio 1</h1> <h3> 3 años</h3>
+                <h1>{{educacion.tituloEdu}}</h1> <h4> {{educacion.fechaEdu}}</h4>
             </li>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Provident cum, accusantium, dolorem aut,
-                asperiores quasi unde expedita iure dolores possimus ea
-                harum in consectetur aperiam perspiciatis? 
-                Ea numquam atque necessitatibus!</p>
+            <div class="col-lg-7"> {{educacion.descEdu}}</div>
+            <div class="col-lg-1" >
+                <img src="{{educacion.imagenEdu}}" alt=""  width="100" class="rounded" class="img-fluid">
+            </div>
+      
         </ul>
-        <ul>
-            <li>
-                <h1>Estudio</h1> <h3> 3 años</h3>
-            </li>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Provident cum, accusantium, dolorem aut,
-                asperiores quasi unde expedita iure dolores possimus ea
-                harum in consectetur aperiam perspiciatis? 
-                Ea numquam atque necessitatibus!</p>
-        </ul>
-        <ul>
-            <li>
-                <h1>Estudio3</h1> <h3> 3 años</h3>
-            </li>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Provident cum, accusantium, dolorem aut,
-                asperiores quasi unde expedita iure dolores possimus ea
-                harum in consectetur aperiam perspiciatis? 
-                Ea numquam atque necessitatibus!</p>
-        </ul>
-    </div>
+      </div>  
+    
     </div>
     

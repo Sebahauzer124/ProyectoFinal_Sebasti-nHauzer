@@ -1,11 +1,11 @@
 
 package com.portfolio.sh.Repository;
 
-import com.portfolio.sh.model.Roll;
+import com.portfolio.sh.model.Rol;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface RollRepository extends JpaRepository<Roll,Long> {
-    public Optional<Roll> findByNombre(String nombre);
+public interface RollRepository extends JpaRepository<Rol,Long> {
+    public Optional<Rol> findByNombre(String nombre);
 }

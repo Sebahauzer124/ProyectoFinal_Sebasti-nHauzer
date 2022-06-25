@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name="roles")
-public class Roll {
+public class Rol {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,8 @@ public class Roll {
     @Column(length=60)
     private String nombre;
 
-    public Roll(Long id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
+    public Rol() {
+        super();
     }
     
 }

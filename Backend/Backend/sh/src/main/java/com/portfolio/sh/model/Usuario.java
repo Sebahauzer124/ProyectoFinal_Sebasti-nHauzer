@@ -36,15 +36,10 @@ public class Usuario {
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id"))
-	private Set<Roll> roles = new HashSet<>();
+	private Set<Rol> roles = new HashSet<>();
 
-    public Usuario(long id, String nombre, String username, String email, String password) {
-        this.id = id;
-        this.nombre = nombre;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-        
-        
+    public Usuario() {
+      super();
+  
+    }   
 }

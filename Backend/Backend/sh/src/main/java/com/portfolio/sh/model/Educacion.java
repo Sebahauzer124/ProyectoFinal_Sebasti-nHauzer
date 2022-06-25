@@ -17,7 +17,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Getter @Setter
+
 @Entity
 @Table(name="educacion")
 public class Educacion{
@@ -47,24 +47,65 @@ public class Educacion{
     @Size(min = 2,message = "Debe tener formato de imagen")
    private String imagenEdu;
     
-    @Column(name="id_edukf")
-    private Long idEduKF;
-    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_persona", nullable=false) 
+    private Persona persona;
+
+    public Long getIdEdu() {
+        return idEdu;
+    }
+
+    public void setIdEdu(Long idEdu) {
+        this.idEdu = idEdu;
+    }
+
+    public String getTituloEdu() {
+        return tituloEdu;
+    }
+
+    public void setTituloEdu(String tituloEdu) {
+        this.tituloEdu = tituloEdu;
+    }
+
+    public String getFechaEdu() {
+        return fechaEdu;
+    }
+
+    public void setFechaEdu(String fechaEdu) {
+        this.fechaEdu = fechaEdu;
+    }
+
+    public String getDescEdu() {
+        return descEdu;
+    }
+
+    public void setDescEdu(String descEdu) {
+        this.descEdu = descEdu;
+    }
+
+    public String getImagenEdu() {
+        return imagenEdu;
+    }
+
+    public void setImagenEdu(String imagenEdu) {
+        this.imagenEdu = imagenEdu;
+    }
     
  
    //Constructor vacio
    public Educacion(){
  }
 
-    public Educacion(Long idEdu, String tituloEdu, String fechaEdu, String descEdu, String imagenEdu, Long idEduKF) {
+    public Educacion(Long idEdu, String tituloEdu, String fechaEdu, String descEdu, String imagenEdu) {
         this.idEdu = idEdu;
         this.tituloEdu = tituloEdu;
         this.fechaEdu = fechaEdu;
         this.descEdu = descEdu;
         this.imagenEdu = imagenEdu;
-        this.idEduKF = idEduKF;
-        
+       
+      
     }
+
 
    
 

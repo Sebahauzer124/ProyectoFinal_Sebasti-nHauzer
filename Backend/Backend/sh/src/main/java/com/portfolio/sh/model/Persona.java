@@ -2,6 +2,7 @@
 
 package com.portfolio.sh.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-@Getter @Setter
+
 @Entity
 @Table(name = "persona" )
 public class Persona implements Serializable {
@@ -50,22 +51,79 @@ public class Persona implements Serializable {
  private String titulo;
  
 
- 
- @OneToMany(fetch = FetchType.LAZY, mappedBy = "idEduKF")
+
+ @OneToMany(mappedBy="persona",cascade=CascadeType.ALL,orphanRemoval = true)
  private List<Educacion> educacionList;
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long Id) {
+        this.Id = Id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getAcercaDe() {
+        return acercaDe;
+    }
+
+    public void setAcercaDe(String acercaDe) {
+        this.acercaDe = acercaDe;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public List<Educacion> getEducacionList() {
+        return educacionList;
+    }
+
+    public void setEducacionList(List<Educacion> educacionList) {
+        this.educacionList = educacionList;
+    }
  
 
    
 public Persona(){
 }
 
-    public Persona(Long Id, String nombre, String apellido, String img, String acercaDe, String titulo) {
+    public Persona(Long Id, String nombre, String apellido, String img, String acercaDe, String titulo, List<Educacion> educacionList) {
         this.Id = Id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.img = img;
         this.acercaDe = acercaDe;
         this.titulo = titulo;
+        this.educacionList = educacionList;
     }
 
 

@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
 
 @RestController
-/*@CrossOrigin(origins = "http://localhost:4200")*/
+@CrossOrigin(origins = "http://localhost:4200")
 public class PersonaController {
     @Autowired IPersonaService ipersonaService;
     
@@ -71,10 +72,13 @@ public class PersonaController {
      
   
   }
-     
+    /*@PathVariable(name ="id")long id 
+     tengo que ver como agregarlo porque si lo
+     pongo no corre el programa
+     */
      @GetMapping("personas/traer/{id}")
-     public Persona findPersona(@PathVariable(name ="id")long id ){
-      return ipersonaService.findPersona(id);
+     public Persona findPersona( ){
+      return ipersonaService.findPersona((long)1);
      }
                                 
     

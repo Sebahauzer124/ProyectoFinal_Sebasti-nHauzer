@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Usuario
  */
 @RestController
-/*@CrossOrigin(origins = "http://localhost:4200")*/
+@CrossOrigin(origins = "http://localhost:4200")
 public class EducacionController {
       @Autowired IEducacionService ieducacionService;
     
@@ -41,7 +41,7 @@ public class EducacionController {
     public ResponseEntity<Educacion> findEducacionById(@PathVariable(name="idEdu")long idEdu){
     return ResponseEntity.ok(ieducacionService.findEducacion(idEdu));
     }
- @PreAuthorize("hasRole('ADMIN')")
+ @PreAuthorize("hasRole('USER')")
    @PostMapping("educacion/crear")
     public String createEducacion(@Valid @RequestBody Educacion educacion){
         ieducacionService.saveEducacion(educacion);
@@ -69,15 +69,15 @@ public class EducacionController {
                                 @RequestParam("tituloEdu") String nuevoTitulo,
                                 @RequestParam("fechaEdu") String nuevaFecha,
                                  @RequestParam("descrpcionEdu") String nuevaDescripcion,
-                                @RequestParam ("imagenEdu") String nuevaImagen,
-                                @RequestParam("idEduKF") Long nvoidEduKF)   {
+                                @RequestParam ("imagenEdu") String nuevaImagen
+                               )   {
      
      Educacion educacion= ieducacionService.findEducacion(idEdu);
      educacion.setTituloEdu(nuevoTitulo);
      educacion.setFechaEdu(nuevaFecha);
      educacion.setDescEdu(nuevaDescripcion);
      educacion.setImagenEdu(nuevaImagen) ;
-     educacion.setIdEduKF(nvoidEduKF);
+    
   
      
      ieducacionService.saveEducacion(educacion);

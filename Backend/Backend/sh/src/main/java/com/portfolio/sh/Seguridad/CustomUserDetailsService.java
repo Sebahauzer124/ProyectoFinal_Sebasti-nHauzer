@@ -4,7 +4,7 @@ package com.portfolio.sh.Seguridad;
 
 
 import com.portfolio.sh.Repository.UsuarioRepository;
-import com.portfolio.sh.model.Roll;
+import com.portfolio.sh.model.Rol;
 import com.portfolio.sh.model.Usuario;
 import java.util.Collection;
 import java.util.Set;
@@ -34,7 +34,7 @@ UsuarioRepository usuarioRepository;
                  
          return new User(usuario.getEmail(),usuario.getPassword(),mapearRoles(usuario.getRoles()));
     }
-  private Collection<? extends GrantedAuthority> mapearRoles(Set<Roll> roles){
+  private Collection<? extends GrantedAuthority> mapearRoles(Set<Rol> roles){
 		return roles.stream().map(rol -> new SimpleGrantedAuthority(rol.getNombre())).collect(Collectors.toList());
 	}
 }
