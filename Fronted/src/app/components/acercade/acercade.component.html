@@ -4,7 +4,7 @@
         <img src="\assets\fotperfil.jpg" class="rounded" class="img-fluid rounded-circle" >
       
     </div>
-    <div class="col-xs-12 col-sm-2 col-md-2 col-ig-2">
+    <div *ngIf="persona" class="col-xs-12 col-sm-2 col-md-2 col-ig-2">
         <p id="nombre">{{persona.nombre}} {{persona.apellido}} </p>
         <p id="titulo">{{persona.titulo}}</p>
     </div>

@@ -16,8 +16,8 @@ export class EducacionService {
   public addEducacion(educacion:Educacion): Observable<Educacion>{
     return this.http.post<Educacion>(this.URL+'crear',educacion);
   }
-  public editEducacion(idEdu:number): Observable<Educacion>{
-    return this.http.put<Educacion>(this.URL+'editar/${idEdu}',idEdu);
+  public editEducacion(educacion:Educacion): Observable<Educacion>{
+    return this.http.put<Educacion>(this.URL+'editar/${idEdu}',educacion);
   }
   /* por que tiene que ser del tipo void y no Educacion*/
   public deleteEducacion(idEdu:number): Observable<void>{

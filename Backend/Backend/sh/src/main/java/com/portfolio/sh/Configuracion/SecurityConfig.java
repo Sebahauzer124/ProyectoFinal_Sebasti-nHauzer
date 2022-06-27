@@ -1,4 +1,3 @@
-
 package com.portfolio.sh.Configuracion;
 
 import com.portfolio.sh.Seguridad.CustomUserDetailsService;
@@ -22,38 +21,40 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
-    
+   
  
-		@Autowired
-	private CustomUserDetailsService userDetailsService;
-	
+@Autowired
+private CustomUserDetailsService userDetailsService;
 
-	
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable()
-		.authorizeRequests().antMatchers(HttpMethod.GET, "/**").permitAll()
+
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+http.csrf().disable()
+.authorizeRequests().antMatchers(HttpMethod.GET, "/**").permitAll()
+                        .antMatchers(HttpMethod.POST, "/**").permitAll()
+                     
            
             .anyRequest()
             .authenticated()
             .and()
             .httpBasic();
-	}
-        @Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+}
+@Bean
+PasswordEncoder passwordEncoder() {
+return new BCryptPasswordEncoder();
+}
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
-	
-	@Override
-	@Bean
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
-    
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+}
+
+@Override
+@Bean
+public AuthenticationManager authenticationManagerBean() throws Exception {
+return super.authenticationManagerBean();
+}
+   
 }

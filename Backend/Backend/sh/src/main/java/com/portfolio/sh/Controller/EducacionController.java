@@ -41,13 +41,13 @@ public class EducacionController {
     public ResponseEntity<Educacion> findEducacionById(@PathVariable(name="idEdu")long idEdu){
     return ResponseEntity.ok(ieducacionService.findEducacion(idEdu));
     }
- @PreAuthorize("hasRole('USER')")
+/* @PreAuthorize("hasRole('USER')")*/
    @PostMapping("educacion/crear")
-    public String createEducacion(@Valid @RequestBody Educacion educacion){
+    public String createEducacion(@RequestBody Educacion educacion){
         ieducacionService.saveEducacion(educacion);
         return "La Educacion fue creada correctamente ";
     }
-   @PreAuthorize("hasRole('ADMIN')") 
+  /* @PreAuthorize("hasRole('ADMIN')")*/ 
    @DeleteMapping("educacion/borrar/{idEdu}")
    public String delateEducacion(@PathVariable Long idEdu){
         
@@ -63,7 +63,7 @@ public class EducacionController {
    private String descEdu;
    private String imagenEdu;
    */
-    @PreAuthorize("hasRole('ADMIN')")
+   /* @PreAuthorize("hasRole('ADMIN')")*/
      @PutMapping("educacion/editar/{idEdu}")
      public Educacion editEducacion(@PathVariable Long idEdu,
                                 @RequestParam("tituloEdu") String nuevoTitulo,
