@@ -49,7 +49,7 @@ public class EducacionController {
     }
   /* @PreAuthorize("hasRole('ADMIN')")*/ 
    @DeleteMapping("educacion/borrar/{idEdu}")
-   public String delateEducacion(@PathVariable Long idEdu){
+   public String delateEducacion(@PathVariable("idEdu") Long idEdu){
         
         ieducacionService.deleteEducacion(idEdu);
         
@@ -65,7 +65,7 @@ public class EducacionController {
    */
    /* @PreAuthorize("hasRole('ADMIN')")*/
      @PutMapping("educacion/editar/{idEdu}")
-     public Educacion editEducacion(@PathVariable Long idEdu,
+     public Educacion editEducacion(@PathVariable("idEdu") Long idEdu,
                                 @RequestParam("tituloEdu") String nuevoTitulo,
                                 @RequestParam("fechaEdu") String nuevaFecha,
                                  @RequestParam("descrpcionEdu") String nuevaDescripcion,

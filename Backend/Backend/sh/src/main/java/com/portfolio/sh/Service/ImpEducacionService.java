@@ -8,9 +8,10 @@ import com.portfolio.sh.Repository.IPersonaRepository;
 import com.portfolio.sh.model.Educacion;
 import com.portfolio.sh.model.Persona;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+@Transactional
 @Service
 public class ImpEducacionService implements IEducacionService {
     @Autowired

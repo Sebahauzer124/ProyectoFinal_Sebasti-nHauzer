@@ -41,6 +41,7 @@ http.csrf().disable()
             .and()
             .httpBasic();
 }
+
 @Bean
 PasswordEncoder passwordEncoder() {
 return new BCryptPasswordEncoder();

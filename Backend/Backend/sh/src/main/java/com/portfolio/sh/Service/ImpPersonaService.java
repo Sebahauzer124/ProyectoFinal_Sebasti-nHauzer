@@ -10,10 +10,12 @@ import com.portfolio.sh.model.Persona;
 import com.portfolio.sh.Interface.IPersonaService;
 import com.portfolio.sh.Repository.IPersonaRepository;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class ImpPersonaService implements IPersonaService {
 @Autowired
 private IPersonaRepository ipersonaRepository;

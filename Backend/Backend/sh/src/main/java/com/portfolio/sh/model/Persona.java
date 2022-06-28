@@ -55,6 +55,9 @@ public class Persona implements Serializable {
  @OneToMany(mappedBy="persona",cascade=CascadeType.ALL,orphanRemoval = true)
  private List<Educacion> educacionList;
 
+ @OneToMany(mappedBy="persona",cascade=CascadeType.ALL,orphanRemoval = true)
+ private List<Experiencia> experienciaList;
+
     public Long getId() {
         return Id;
     }
@@ -110,13 +113,16 @@ public class Persona implements Serializable {
     public void setEducacionList(List<Educacion> educacionList) {
         this.educacionList = educacionList;
     }
- 
 
-   
-public Persona(){
-}
+    public List<Experiencia> getExperienciaList() {
+        return experienciaList;
+    }
 
-    public Persona(Long Id, String nombre, String apellido, String img, String acercaDe, String titulo, List<Educacion> educacionList) {
+    public void setExperienciaList(List<Experiencia> experienciaList) {
+        this.experienciaList = experienciaList;
+    }
+public Persona(){};
+    public Persona(Long Id, String nombre, String apellido, String img, String acercaDe, String titulo, List<Educacion> educacionList, List<Experiencia> experienciaList) {
         this.Id = Id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -124,7 +130,9 @@ public Persona(){
         this.acercaDe = acercaDe;
         this.titulo = titulo;
         this.educacionList = educacionList;
+        this.experienciaList = experienciaList;
     }
+ 
 
 
 
