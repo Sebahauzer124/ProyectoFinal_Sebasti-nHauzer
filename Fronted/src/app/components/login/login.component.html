@@ -1,40 +1,32 @@
-<section class="vh-100" style="background-color: #508bfc;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card shadow-2-strong" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-  
-              <h3 class="mb-5">Ingresar</h3>
-  
-              <div class="form-outline mb-4">
-                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX-2">Email</label>
-              </div>
-  
-              <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX-2">Contraseña</label>
-              </div>
-  
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-start mb-4">
-                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                <label class="form-check-label" for="form1Example3"> Recordar contraseña </label>
-              </div>
-  
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-  
-              <hr class="my-4">
-  
-              <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-                type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
-              <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
-                type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
-  
-            </div>
-          </div>
-        </div>
-      </div>
+<h1 class="m-5"> Iniciar Sesion</h1>
+<form [formGroup]="form" class="m-5" (ngSubmit)="onEnviar($event)" >
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" formcontrolName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+    [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid':!Email?.errors && Email?.touched}">
+    
+    <div *ngIf="Email?.errors && Email?.touched">
+    <p *ngIf="Email?.hasError('required')" class="text-danger">
+      El email es requerido
+    </p>
+    <p *ngIf="Email?.hasError('email')" class="text-danger">
+      El formato del email debe ser válido.
+    </p>
     </div>
-  </section>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1">Contraseña</label>
+    <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+    [ngClass]="{'is-invalid':Password?.errors && Password?.touched,
+  'is-valid':!Password?.errors && Password?.touched}">
+  <div *ngIf="Password?.errors && Password?.touched">
+    <p *ngIf="Password?.hasError('required')" class="text-danger">
+      La contraseña es requerida
+    </p>
+    <p *ngIf="Password?.errors?.['minLength']" class="text-danger">
+      La contraseña debe ser de 8 o mas caracteres.
+    </p>
+  </div>
+  </div> 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -13,10 +13,12 @@ import { ElabComponent } from './components/elab/elab.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { FooterComponent } from './components/footer/footer.component';
- import {HttpClientModule} from '@angular/common/http';
+ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PersonaService } from './Servicios/persona.service';
+import { InterceptorService } from './Servicios/interceptor.service';
  
 @NgModule({
   declarations: [
@@ -39,10 +41,11 @@ import { FormsModule } from '@angular/forms';
     NgCircleProgressModule.forRoot({}),
     HttpClientModule,
     FormsModule,
-    
-    
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [PersonaService,
+    {provide:HTTP_INTERCEPTORS, useClass: InterceptorService,multi:true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

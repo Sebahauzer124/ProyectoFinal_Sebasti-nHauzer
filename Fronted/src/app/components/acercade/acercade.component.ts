@@ -11,7 +11,11 @@ persona: Persona = new Persona("","","","","");
   constructor(public personaService:PersonaService) { }
 
   ngOnInit(): void {
-    this.personaService.getPersona().subscribe(data=> (this.persona=data))
+    this.personaService.getPersona().subscribe(data=>{
+      console.log("Datos personales" + JSON.stringify(data));
+      this.persona = data;
+    }); 
+
   }
 
 }
