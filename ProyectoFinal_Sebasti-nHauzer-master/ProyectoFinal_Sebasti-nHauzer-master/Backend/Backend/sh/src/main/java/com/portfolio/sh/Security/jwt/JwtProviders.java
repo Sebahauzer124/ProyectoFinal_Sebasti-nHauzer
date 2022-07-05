@@ -4,6 +4,11 @@ package com.portfolio.sh.Security.jwt;
 import com.portfolio.sh.Security.Entity.UsuarioPrincipal;
 
 import com.sun.org.apache.xml.internal.security.algorithms.SignatureAlgorithm;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +31,7 @@ public class JwtProviders {
     return Jwts. builder().setSubject(usuarioPrincipal.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime()+ expiration*1000))
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(io.jsonwebtoken.SignatureAlgorithm.HS512, secret)
                 .compact();
     }
     public String getNombreUsuarioFromToken(String token){
@@ -35,10 +40,10 @@ public class JwtProviders {
 
     public boolean validateToken(String token){
         try{
-        Jwts.parser().sertSigningKey(secret).parseClaimsJws(token);
+        Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
         return true;
         }
-        catch(MalFormedJwException e){
+        catch(MalformedJwtException e){
         logger.error("Token mal formado");
         } catch(UnsupportedJwtException e){
         logger.error("Token no soportado");
