@@ -1,0 +1,29 @@
+.row{
+    padding: 10px;
+    border-color: black;
+}
+
+.h1,h4{
+    display: inline;
+}
+
+.h1{
+padding: 10px;
+}
+
+img{
+    display:inline-block; 
+    text-align: justify;
+    border-style: 2px solid black;
+}
+.btn-group{
+    left: 75%;
+}
+.col{
+    display: inline-flex;
+    margin: 1%;;
+}
+ul{
+    border:2px solid black,
+    
+}
