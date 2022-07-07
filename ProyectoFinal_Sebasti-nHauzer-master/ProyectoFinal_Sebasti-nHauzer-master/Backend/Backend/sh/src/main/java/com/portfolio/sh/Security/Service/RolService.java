@@ -1,12 +1,13 @@
 
 package com.portfolio.sh.Security.Service;
 
+import com.portfolio.sh.Security.Entity.Rol;
 import com.portfolio.sh.Security.Enums.RolNombre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.portfolio.sh.Security.Repository.iRolRepository;
-import com.portfolio.sh.model.Rol;
+
 import java.util.Optional;
 
 @Service
