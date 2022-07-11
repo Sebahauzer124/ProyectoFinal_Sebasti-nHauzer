@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class JwtProviders {
-    private final static Logger logger = LoggerFactory.getLogger(JwtProviders.class);
+public class JwtProvider {
+    private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
     @Value("${jwt.secret}")
     private String secret;

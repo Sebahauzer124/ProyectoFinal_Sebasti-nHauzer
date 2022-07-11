@@ -8,7 +8,7 @@ import com.portfolio.sh.Security.Entity.Usuario;
 import com.portfolio.sh.Security.Enums.RolNombre;
 import com.portfolio.sh.Security.Service.RolService;
 import com.portfolio.sh.Security.Service.UsuarioService;
-import com.portfolio.sh.Security.jwt.JwtProviders;
+import com.portfolio.sh.Security.jwt.JwtProvider;
 import java.util.HashSet;
 import java.util.Set;
 import javax.validation.Valid;
@@ -43,7 +43,7 @@ public class AuthController {
     @Autowired
     RolService rolService;
     @Autowired
-    JwtProviders jwtProvider;
+    JwtProvider jwtProvider;
    
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
