@@ -6,6 +6,7 @@ import com.portfolio.sh.model.Persona;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +36,7 @@ public class PersonaController {
     List <Persona> persona=impPersonaService.buscarPersona();
     return new ResponseEntity<>(persona,HttpStatus.OK);
     }
-   
+   @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<Persona> editarPersona(@RequestBody Persona persona){
     Persona updatePersona=impPersonaService.editarPersona(persona);
@@ -43,11 +44,12 @@ public class PersonaController {
     }
      
     @PostMapping("/add")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Persona> crearPersona(@RequestBody Persona persona){
     Persona nuevoPersona=impPersonaService.addPersona(persona);
     return new ResponseEntity<> (nuevoPersona,HttpStatus.CREATED);
     }
-   
+   @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> borrarPersona(@PathVariable("id") Long id){
     impPersonaService.borrarPersona(id);

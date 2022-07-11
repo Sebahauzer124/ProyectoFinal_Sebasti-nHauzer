@@ -38,14 +38,20 @@ public class Skill {
     public Skill() {
     }
 
-    public Skill(String tituloSkill, String imagenSkill, double porcentaje, Persona persona) {
+    public Skill(Long idSkill, String tituloSkill, String imagenSkill, double porcentaje) {
+        this.idSkill = idSkill;
         this.tituloSkill = tituloSkill;
         this.imagenSkill = imagenSkill;
         this.porcentaje = porcentaje;
-        this.persona = persona;
     }
-      
- 
+
+  
+
+    public Long getIdSkill() {
+        return idSkill;
+    }
+
+  
 
     public String getTituloSkill() {
         return tituloSkill;
@@ -69,6 +75,12 @@ public class Skill {
 
     public void setPorcentaje(double porcentaje) {
         this.porcentaje = porcentaje;
+    }
+
+  
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
  

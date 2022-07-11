@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -69,6 +69,7 @@ public class AuthController {
     usuarioService.save(usuario);
     return new ResponseEntity(new Mensaje("Usuario guardado"),HttpStatus.CREATED);
     }
+    
     @PostMapping("/login")
     public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult ){
     if(bindingResult.hasErrors())
@@ -76,15 +77,14 @@ public class AuthController {
     
     Authentication authentication=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
     loginUsuario.getNombreUsuario(),loginUsuario.getPassword()));
-   
     SecurityContextHolder.getContext().setAuthentication(authentication);
     String jwt = jwtProvider.generateToken(authentication);
-   
     UserDetails userDetails=(UserDetails) authentication.getPrincipal();
-   
     JwtDto jwtDto= new JwtDto(jwt,userDetails.getUsername(),userDetails.getAuthorities());
+    return new ResponseEntity(jwtDto,HttpStatus.OK);
+    
    
-    return new ResponseEntity(jwtDto, HttpStatus.OK);
+
     }
 }
 

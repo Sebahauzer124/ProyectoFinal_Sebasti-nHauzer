@@ -6,6 +6,7 @@ import com.portfolio.sh.model.Educacion;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,19 +36,19 @@ public class EducacionController {
     List <Educacion> educacion=impEducacionService.buscarEducacion();
     return new ResponseEntity<>(educacion,HttpStatus.OK);
     }
-   
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<Educacion> editarEducacion(@RequestBody Educacion educacion){
     Educacion updateEducacion=impEducacionService.editarEducacion(educacion);
     return new ResponseEntity<> (updateEducacion,HttpStatus.OK);
     }
-     
+      @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<Educacion> crearEducacion(@RequestBody Educacion educacion){
     Educacion nuevoEducacion=impEducacionService.addEducacion(educacion);
     return new ResponseEntity<> (nuevoEducacion,HttpStatus.CREATED);
     }
-   
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{idEdu}")
     public ResponseEntity<?> borrarEducacion(@PathVariable("idEdu") Long idEdu){
     impEducacionService.borrarEducacion(idEdu);

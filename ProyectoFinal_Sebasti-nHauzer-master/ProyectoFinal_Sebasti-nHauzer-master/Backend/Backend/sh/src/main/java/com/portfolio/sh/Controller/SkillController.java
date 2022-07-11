@@ -6,6 +6,7 @@ import com.portfolio.sh.model.Skill;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,19 +36,19 @@ public class SkillController {
     List <Skill> skill=impSkillService.buscarSkill();
     return new ResponseEntity<>(skill,HttpStatus.OK);
     }
-   
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<Skill> editarSkill(@RequestBody Skill skill){
     Skill updateSkill=impSkillService.editarSkill(skill);
     return new ResponseEntity<> (updateSkill,HttpStatus.OK);
     }
-     
+      @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<Skill> crearSkill(@RequestBody Skill skill){
     Skill nuevoSkill=impSkillService.addSkill(skill);
     return new ResponseEntity<> (nuevoSkill,HttpStatus.CREATED);
     }
-   
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{idSkill}")
     public ResponseEntity<?> borrarSkill(@PathVariable("idSkill") Long idSkill){
     impSkillService.borrarSkill(idSkill);

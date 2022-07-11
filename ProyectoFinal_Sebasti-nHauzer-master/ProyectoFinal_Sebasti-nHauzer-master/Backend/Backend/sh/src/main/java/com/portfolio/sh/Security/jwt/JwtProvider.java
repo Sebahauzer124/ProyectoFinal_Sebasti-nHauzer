@@ -3,7 +3,7 @@ package com.portfolio.sh.Security.jwt;
 
 import com.portfolio.sh.Security.Entity.UsuarioPrincipal;
 
-import com.sun.org.apache.xml.internal.security.algorithms.SignatureAlgorithm;
+
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;

@@ -51,12 +51,19 @@ public class Experiencia{
 
         public Experiencia(){};
 
-    public Experiencia(String tituloExp, String fechaExp, String descExp, String imagenExp, Persona persona) {
+    public Experiencia(Long idExp, String tituloExp, String fechaExp, String descExp, String imagenExp) {
+        this.idExp = idExp;
         this.tituloExp = tituloExp;
         this.fechaExp = fechaExp;
         this.descExp = descExp;
         this.imagenExp = imagenExp;
-        this.persona = persona;
+    }
+
+
+    
+
+    public Long getIdExp() {
+        return idExp;
     }
 
   
@@ -93,6 +100,15 @@ public class Experiencia{
     public void setImagenExp(String imagenExp) {
         this.imagenExp = imagenExp;
     }
+
+  
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+
+    
         
 }
  

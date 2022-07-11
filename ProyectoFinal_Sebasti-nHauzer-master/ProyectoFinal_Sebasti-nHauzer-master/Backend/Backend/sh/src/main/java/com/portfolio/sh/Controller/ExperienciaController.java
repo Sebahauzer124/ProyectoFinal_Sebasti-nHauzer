@@ -6,6 +6,7 @@ import com.portfolio.sh.model.Experiencia;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,19 +36,19 @@ public class ExperienciaController {
     List <Experiencia> experiencia=impExperienciaService.buscarExperiencia();
     return new ResponseEntity<>(experiencia,HttpStatus.OK);
     }
-   
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<Experiencia> editarExperiencia(@RequestBody Experiencia experiencia){
     Experiencia updateExperiencia=impExperienciaService.editarExperiencia(experiencia);
     return new ResponseEntity<> (updateExperiencia,HttpStatus.OK);
     }
-     
+      @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<Experiencia> crearExperiencia(@RequestBody Experiencia experiencia){
     Experiencia nuevoExperiencia=impExperienciaService.addExperiencia(experiencia);
     return new ResponseEntity<> (nuevoExperiencia,HttpStatus.CREATED);
     }
-   
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{idExp}")
     public ResponseEntity<?> borrarExperiencia(@PathVariable("idExp") Long idExp){
     impExperienciaService.borrarExperiencia(idExp);

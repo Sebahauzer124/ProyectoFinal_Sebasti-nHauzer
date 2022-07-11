@@ -52,13 +52,21 @@ public class Educacion{
     public Educacion() {
     }
 
-    public Educacion(String tituloEdu, String fechaEdu, String descEdu, String imagenEdu, Persona persona) {
+    public Educacion(Long idEdu, String tituloEdu, String fechaEdu, String descEdu, String imagenEdu) {
+        this.idEdu = idEdu;
         this.tituloEdu = tituloEdu;
         this.fechaEdu = fechaEdu;
         this.descEdu = descEdu;
         this.imagenEdu = imagenEdu;
-        this.persona = persona;
     }
+
+   
+
+    public Long getIdEdu() {
+        return idEdu;
+    }
+
+ 
 
  
     
@@ -93,6 +101,11 @@ public class Educacion{
 
     public void setImagenEdu(String imagenEdu) {
         this.imagenEdu = imagenEdu;
+    }
+
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
     
 

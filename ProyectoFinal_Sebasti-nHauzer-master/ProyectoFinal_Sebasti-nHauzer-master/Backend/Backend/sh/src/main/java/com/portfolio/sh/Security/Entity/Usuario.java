@@ -17,7 +17,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="usuarios")
 public class Usuario {
  @Id
  @GeneratedValue(strategy=GenerationType.IDENTITY)

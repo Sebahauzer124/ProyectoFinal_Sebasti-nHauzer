@@ -12,7 +12,7 @@ form: FormGroup;
   constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService,private ruta:Router) {
     this.form = this.formBuilder.group({
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(8)]],
+      password:['',[Validators.required,Validators.minLength(4)]],
       deviceInfo:this.formBuilder.group({
         deviceId:["17867868768"],
         deviceType:["DEVICE_TYPE_ANDROID"],
