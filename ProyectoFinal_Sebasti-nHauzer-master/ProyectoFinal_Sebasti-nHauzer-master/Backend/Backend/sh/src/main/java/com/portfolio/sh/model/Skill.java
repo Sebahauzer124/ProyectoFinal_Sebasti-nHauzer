@@ -9,30 +9,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name= "skills")
 public class Skill {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_skill")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long idSkill;
-    @Column(name="titulo_skill")
-    @NotEmpty
-    @Size(min = 2,message = "el titulo debe contener al menos dos caracteres")
+    
+    
    private String tituloSkill;
     
-    @Column(name="imagen_skill")
-    @NotEmpty
-    @Size(min = 2,message = "Debe contener formato fecha")
+    
    private String imagenSkill;
     
-      @Column(name="porcentaje")
+     
     private double porcentaje;
    
       @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_persona" ) 
+    @JoinColumn(name="id_persona",nullable=false ) 
     private Persona persona;   
 
     public Skill() {

@@ -2,7 +2,7 @@
 package com.portfolio.sh.model;
 
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,38 +11,27 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 
 
 @Entity
-@Table(name="experiencia")
+@Table(name="experiencias")
 public class Experiencia{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id_exp")
-   private Long idExp;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idExp;
     
-    @Column(name="titulo_exp")
-    @NotEmpty
-    @Size(min = 2,message = "el titulo debe contener al menos dos caracteres")
+    
    private String tituloExp;
     
-    @Column(name="fecha_exp")
-    @NotEmpty
-    @Size(min = 2,message = "Debe contener formato fecha")
+    
     private String fechaExp;
     
-    @Column(name="desc_exp")
-    @NotEmpty
-    @Size(min = 2,message = "La descrpcion debe tener mas caracteres")
+    
    private String descExp;
     
-    @Column(name="imagen_exp")
-    @NotEmpty
-    @Size(min = 2,message = "Debe tener formato de imagen")
+    
    private String imagenExp;
     
     @ManyToOne(fetch = FetchType.LAZY)
@@ -59,15 +48,13 @@ public class Experiencia{
         this.imagenExp = imagenExp;
     }
 
-
-    
-
     public Long getIdExp() {
         return idExp;
     }
 
-  
-
+    public void setIdExp(Long idExp) {
+        this.idExp = idExp;
+    }
 
     public String getTituloExp() {
         return tituloExp;
@@ -101,12 +88,18 @@ public class Experiencia{
         this.imagenExp = imagenExp;
     }
 
-  
+    public Persona getPersona() {
+        return persona;
+    }
 
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
 
+
+    
+
+ 
 
     
         
