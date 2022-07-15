@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonaService } from './Servicios/persona.service';
+import { interceptorProvider } from './Servicios/interceptor-service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PersonaService } from './Servicios/persona.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [PersonaService,
+  providers: [
+    interceptorProvider
    
   ],
   bootstrap: [AppComponent]
